@@ -17,7 +17,12 @@ function App() {
 
   const [backgroundColor, setBackgroundColor] = useState('#ffffff');
 
+  const imageSrcs = [
+
+  ];
+
   return (
+    <>
     <div className='container-row gap-4'>
       <div className='parte-forms'>
 
@@ -59,8 +64,14 @@ function App() {
         familyMembers = { familyMembers }
         backgroundColor = { backgroundColor }
       />
-
     </div>
+
+    <footer>
+      <a href="http://www.freepik.com">Images designed by rawpixel.com / Freepik</a>
+    </footer>
+
+    </>
+
   )
 }
 
