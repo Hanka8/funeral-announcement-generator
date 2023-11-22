@@ -1,13 +1,13 @@
 import React from 'react'
+import illustrations from './illustrations';
 
-export default function ParteInfoInput({
+export default function ParteDesignInput({
     setBackgroundColor,
-    backgroundColor,
+    illustrationSource,
+    setIllustrationSource,
 }) {
 
     const [isOpen, setIsOpen] = React.useState(false);
-
-
 
   return (
         <form className = { isOpen ? "open parte-info-input" : "closed parte-info-input" }>
@@ -30,6 +30,18 @@ export default function ParteInfoInput({
                 name='background-color'
                 onChange={ (e) => setBackgroundColor(e.target.value)}
             />
+           
+        {illustrations.map((img, i) => (
+            <div className="video-inputs">
+                <input key={i} type="radio" name="illustrationSource" value={img} onClick={() => {
+                    setIllustrationSource(img)
+                    console.log(illustrationSource)
+                    }
+                } 
+                    />
+            </div>
+        ))}
+
 
         </div>
       </form>

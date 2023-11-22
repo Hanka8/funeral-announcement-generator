@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import illustrations from './components/illustrations';
 import ParteResult from './components/ParteResult';
 import ParteInfoInput from './components/ParteInfoInput';
 import ParteDesignIpnput from './components/ParteDesignInput';
@@ -16,10 +17,7 @@ function App() {
   const [familyMembers, setFamilyMembers] = useState([{ name: '', role: '' }]);
 
   const [backgroundColor, setBackgroundColor] = useState('#ffffff');
-
-  const imageSrcs = [
-
-  ];
+  const [illustrationSource, setIllustrationSource] = useState(illustrations[0]);
 
   return (
     <>
@@ -29,6 +27,8 @@ function App() {
         <ParteDesignIpnput
           setBackgroundColor={setBackgroundColor}
           backgroundColor={backgroundColor}
+          illustrationSource={illustrationSource}
+          setIllustrationSource={setIllustrationSource}
         />
 
         <ParteInfoInput 
@@ -63,6 +63,7 @@ function App() {
         adressing2 = { adressing2 || 'on behalf of the beloved family'}
         familyMembers = { familyMembers }
         backgroundColor = { backgroundColor }
+        illustrationSource = { illustrationSource }
       />
     </div>
 

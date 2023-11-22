@@ -1,6 +1,5 @@
 import React from 'react'
-
-
+import illustrations from './illustrations'
 
 export default function ParteResult( { 
   name, 
@@ -12,6 +11,7 @@ export default function ParteResult( {
   adressing2, 
   familyMembers,
   backgroundColor,
+  illustrationSource,
  } ) {
 
   const parteResultStyle = {
@@ -23,7 +23,7 @@ export default function ParteResult( {
       <h1>Your funeral announcement</h1>
       <div className='parte-result' style={parteResultStyle}>
         <div className='upper-container container-row space-around'>
-            <img className='parte-illustration' src={ img1 } alt="parte illustration" />
+            <img className='parte-illustration' src={ illustrationSource } alt="parte illustration" />
             <p className='poem'>{ poem }</p>
         </div>
         <p className='announcement'>{ announcement }</p>
