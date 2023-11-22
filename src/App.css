@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/* utility */
+
+.container-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.space-around {
+  justify-content: space-between;
+}
+
+.gap-4 {
+  gap: 4rem;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+/* App */
+
+.parte-result {
+  padding: 2rem;
+  border: 1px solid #ccc;
+  width: 30vw;
+  height: calc(30vw * 1.414); /* 1.414 = sqrt(2) = A4 ratio */
+  text-align: center;
+}
+
+.parte-illustration {
+  width: 30%;
+}
+
+.poem {
+  max-width: 40%;
+}
+
+.upper-container {
+  margin-bottom: 2rem;
+}
+
+.announcement {
+  margin-bottom: 1rem;
+}
+
+.adressing {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.farewell {
+  margin-bottom: 4rem;
+}
+
+.adressing2 {
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.familyMembers-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+}
+
+.familyMember-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.familyMember-role {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
