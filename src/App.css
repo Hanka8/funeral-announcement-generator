@@ -33,7 +33,24 @@
   align-items: flex-start;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  background-color: rgb(59, 59, 59);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
 /* App */
+
+.parte-forms {
+  width: 30vw;
+  background-color: rgb(236, 236, 236);
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);  
+}
 
 .parte-result {
   padding: 2rem;
@@ -98,4 +115,8 @@
 .familyMember-role {
   font-weight: bold;
   margin-bottom: 1rem;
+}
+
+.closed .accordion {
+  display: none;
 }

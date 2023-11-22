@@ -1,10 +1,25 @@
 import React from 'react'
 
-export default function ParteResult( { name, poem, announcement, adressing, died, farewell, adressing2, familyMembers } ) {
+export default function ParteResult( { 
+  name, 
+  poem, 
+  announcement, 
+  adressing, 
+  died, 
+  farewell, 
+  adressing2, 
+  familyMembers,
+  backgroundColor,
+ } ) {
+
+  const parteResultStyle = {
+    backgroundColor: backgroundColor,
+  }
+
   return (
     <div>
       <h1>Your funeral announcement</h1>
-      <div className='parte-result'>
+      <div className='parte-result' style={parteResultStyle}>
         <div className='upper-container container-row space-around'>
             <img className='parte-illustration' src="https://img.freepik.com/free-vector/vintage-religious-original-cross-template_225004-1272.jpg?w=740&t=st=1700577456~exp=1700578056~hmac=7257c89991b8af94178fcd1140a6ece3505ceb65bee8bc3ebed8a0e672af192f" alt="parte" />
             <p className='poem'>{ poem }</p>

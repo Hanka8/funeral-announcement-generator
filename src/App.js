@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import ParteResult from './components/ParteResult';
-
 import './App.css';
+import ParteResult from './components/ParteResult';
+import ParteInfoInput from './components/ParteInfoInput';
+import ParteDesignIpnput from './components/ParteDesignInput';
 
 function App() {
 
@@ -14,118 +15,39 @@ function App() {
   const [adressing2, setAdressing2] = useState('');
   const [familyMembers, setFamilyMembers] = useState([{ name: '', role: '' }]);
 
-  const handleAddFamilyMember = () => {
-    setFamilyMembers([...familyMembers, { name: '', role: '' }]);
-  };
-
-  const handleRemoveFamilyMember = (index) => {
-    const updatedFamilyMembers = [...familyMembers];
-    updatedFamilyMembers.splice(index, 1);
-    setFamilyMembers(updatedFamilyMembers);
-  };
-
-  const handleFamilyMemberChange = (index, field, value) => {
-    const updatedFamilyMembers = [...familyMembers];
-    updatedFamilyMembers[index][field] = value;
-    setFamilyMembers(updatedFamilyMembers);
-  };
+  const [backgroundColor, setBackgroundColor] = useState('#ffffff');
 
   return (
     <div className='container-row gap-4'>
-      <form className='container-column align-start'>
-        
-        <label htmlFor="poem">Poem: </label>
-        <textarea 
-          id="poem" 
-          rows="4" 
-          cols="50"
-          placeholder='Poem'
-          onChange={ (e) => setPoem(e.target.value)}
-          />
+      <div className='parte-forms'>
 
-        <label htmlFor="nameannouncement">Announcement: </label>
-        <textarea
-          id="nameannouncement"
-          rows="4" 
-          cols="50"
-          placeholder='Announcement'
-          value={ announcement}
-          onChange={ (e) => setAnnouncement(e.target.value) }
+        <ParteDesignIpnput
+          setBackgroundColor={setBackgroundColor}
+          backgroundColor={backgroundColor}
         />
 
-        <label htmlFor="adressing">Adressing: </label>
-        <input 
-          id='adressing'
-          type="text"
-          placeholder='Adressing'
-          value = { adressing }
-          onChange={ (e) => setAdressing(e.target.value) }
-        />
+        <ParteInfoInput 
+          setPoem={setPoem}
+          setAnnouncement={setAnnouncement}
+          setAdressing={setAdressing}
+          setName={setName}
+          setDied={setDied}
+          setFarewell={setFarewell}
+          setAdressing2={setAdressing2}
+          setFamilyMembers={setFamilyMembers}
+          poem={poem}
+          announcement={announcement}
+          adressing={adressing}
+          name={name}
+          died={died}
+          farewell={farewell}
+          adressing2={adressing2}
+          familyMembers={familyMembers}
+      />
 
-        <label htmlFor="name">Name: </label>
-        <input
-          id="name"
-          type="text"
-          placeholder='Name'
-          value={ name }
-          onChange={ (e) => setName(e.target.value) }
-        />
-
-        <label htmlFor="died">Died: </label>
-        <textarea
-          id="died"
-          rows="4" 
-          cols="30"
-          placeholder='Announcement'
-          value={ died }
-          onChange={ (e) => setDied(e.target.value) }
-        />
-
-        <label htmlFor="farewell">Farewell: </label>
-        <textarea
-          id="died"
-          rows="4" 
-          cols="40"
-          placeholder='Farewell'
-          value={ farewell }
-          onChange={ (e) => setFarewell(e.target.value) }
-        />
-
-        <label htmlFor="adressing2">Adressing2: </label>
-        <input
-          id="adressing2"
-          type="text"
-          placeholder='adressing 2'
-          value={ adressing2 }
-          onChange={ (e) => setAdressing2(e.target.value) }
-        />
-
-        <label htmlFor="familyMembers">Family Members:</label>
-        {familyMembers.map((member, index) => (
-          <div key={index}>
-            <input
-              type="text"
-              placeholder={`Family Member #${index + 1} Name`}
-              value={member.name}
-              onChange={(e) => handleFamilyMemberChange(index, 'name', e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder={`Family Member #${index + 1} Role`}
-              value={member.role}
-              onChange={(e) => handleFamilyMemberChange(index, 'role', e.target.value)}
-            />
-            <button type="button" onClick={() => handleRemoveFamilyMember(index)}>
-              Remove
-            </button>
-          </div>
-        ))}
-        <button type="button" onClick={handleAddFamilyMember}>
-          Add Family Member
-        </button>
+      </div>
 
 
-      </form>
       <ParteResult 
         name = { name || 'Jon Doe' } 
         poem = { poem || 'Your presence we miss, Your memories we treasure, Loving you always, Forgetting you never.'}
@@ -135,7 +57,9 @@ function App() {
         farewell = { farewell || 'The last farewell will be held on Tuesday at 19:00 in the ceremonial hall in Prague.'}
         adressing2 = { adressing2 || 'on behalf of the beloved family'}
         familyMembers = { familyMembers }
+        backgroundColor = { backgroundColor }
       />
+
     </div>
   )
 }
