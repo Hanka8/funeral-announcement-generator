@@ -21,8 +21,20 @@
   align-items: center;
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
 .space-around {
   justify-content: space-between;
+}
+
+.gap-05 {
+  gap: 0.5rem;
+}
+
+.gap-1 {
+  gap: 1rem;
 }
 
 .gap-4 {
@@ -42,6 +54,11 @@
   margin-bottom: 1rem;
 }
 
+.mini-img {
+  width: 20px;
+  aspect-ratio: 1;
+}
+
 /* App */
 
 .parte-forms {
@@ -53,7 +70,7 @@
 }
 
 .parte-result {
-  padding: 2rem;
+  padding: 4rem;
   border: 1px solid #ccc;
   width: 30vw;
   height: calc(30vw * 1.414); /* 1.414 = sqrt(2) = A4 ratio */
@@ -62,6 +79,10 @@
 
 .parte-illustration {
   width: 30%;
+}
+
+.parte-info-input {
+  padding: 1rem;
 }
 
 .poem {

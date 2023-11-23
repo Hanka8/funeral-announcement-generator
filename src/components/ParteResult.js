@@ -1,5 +1,4 @@
-import React from 'react'
-import illustrations from './illustrations'
+import React from 'react';
 
 export default function ParteResult( { 
   name, 
@@ -12,10 +11,15 @@ export default function ParteResult( {
   familyMembers,
   backgroundColor,
   illustrationSource,
+  frameSource,
  } ) {
 
   const parteResultStyle = {
     backgroundColor: backgroundColor,
+    backgroundImage: `url(${frameSource})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundSize: 'contain',
   }
 
   return (
