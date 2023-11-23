@@ -19,7 +19,7 @@ export default function ParteResult( {
     backgroundImage: `url(${frameSource})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    backgroundSize: 'contain',
+    backgroundSize: '30vw calc(30vw * 1.414)',
   }
 
   return (
