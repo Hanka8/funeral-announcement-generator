@@ -3,11 +3,12 @@ import illustrations from './illustrations';
 import frames from './frames';
 
 export default function ParteDesignInput({
-    setBackgroundColor,
-    illustrationSource,
-    setIllustrationSource,
-    frameSource,
-    setFrameSource,
+    
+    handleChange,
+
+    // setBackgroundColor,
+    // setIllustrationSource,
+    // setFrameSource,
 }) {
 
     const [isOpen, setIsOpen] = React.useState(false);
@@ -31,17 +32,14 @@ export default function ParteDesignInput({
                     type='color' 
                     id='background-color' 
                     name='background-color'
-                    onChange={ (e) => setBackgroundColor(e.target.value)}
+                    onChange={ (e) => handleChange(e)}
                 />
             
                 <label htmlFor="illustrationSource">Illustration: </label>
                 <div className='container-row gap-1'>
                     {illustrations.map((img, i) => (
                             <div className='container-column gap-05'>
-                                <input key={i} type="radio" name="illustrationSource" value={img} onClick={() => {
-                                    setIllustrationSource(img)
-                                    }
-                                } 
+                                <input key={i} type="radio" name="illustrationSource" value={img} onChange={(e) => handleChange(e)}
                                     />
                                 <img className='mini-img' src={img} alt="illustration" />
                             </div>
@@ -56,7 +54,7 @@ export default function ParteDesignInput({
                                 type="radio"
                                 name="frameSource"
                                 value={img}
-                                onClick={() => setFrameSource(img)}
+                                onChange={(e) => handleChange(e)}
                             />
                             <img className='mini-img' src={img} alt="frame" />
                         </div>
