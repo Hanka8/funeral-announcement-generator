@@ -1,13 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import illustrations from './illustrations';
 import frames from './frames';
 
 export default function ParteDesignInput({
-    setBackgroundColor,
-    illustrationSource,
-    setIllustrationSource,
-    frameSource,
-    setFrameSource,
+    design,
+    handleDesignChange,
 }) {
 
     const [isOpen, setIsOpen] = React.useState(false);
@@ -28,21 +25,23 @@ export default function ParteDesignInput({
                 
                 <label htmlFor="background-color">Background-color: </label>
                 <input 
-                    type='color' 
-                    id='background-color' 
-                    name='background-color'
-                    onChange={ (e) => setBackgroundColor(e.target.value)}
+                    type='color'
+                    id='background-color'
+                    name='backgroundColor'
+                    onChange={ (e) => handleDesignChange(e) }
                 />
             
                 <label htmlFor="illustrationSource">Illustration: </label>
                 <div className='container-row gap-1'>
                     {illustrations.map((img, i) => (
                             <div className='container-column gap-05'>
-                                <input key={i} type="radio" name="illustrationSource" value={img} onClick={() => {
-                                    setIllustrationSource(img)
-                                    }
-                                } 
-                                    />
+                                <input 
+                                    key={i} 
+                                    type="radio" 
+                                    name="illustration" 
+                                    value={img} 
+                                    onChange={ (e) => handleDesignChange(e)}
+                                />
                                 <img className='mini-img' src={img} alt="illustration" />
                             </div>
                     ))}
@@ -54,9 +53,9 @@ export default function ParteDesignInput({
                         <div className='container-column gap-05' key={`${i}_2`}>
                             <input
                                 type="radio"
-                                name="frameSource"
+                                name="frame"
                                 value={img}
-                                onClick={() => setFrameSource(img)}
+                                onChange={ (e) => handleDesignChange(e)}
                             />
                             <img className='mini-img' src={img} alt="frame" />
                         </div>

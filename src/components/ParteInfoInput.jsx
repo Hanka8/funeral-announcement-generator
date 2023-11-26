@@ -1,43 +1,46 @@
-import React from 'react'
+import React, { useState } from "react";
 
-export default function ParteInfoInput({
-    setPoem,
-    setAnnouncement,
-    setAdressing,
-    setName,
-    setDied,
-    setFarewell,
-    setAdressing2,
-    setFamilyMembers,
-    poem,
-    announcement,
-    adressing,
-    name,
-    died,
-    farewell,
-    adressing2,
-    familyMembers,
+export default function ParteInfoInput({ 
+    values, 
+    handleChange,
+    setValues
 }) {
 
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleAddFamilyMember = () => {
-        setFamilyMembers([...familyMembers, { name: '', role: '' }]);
+        setValues((prevValues) => {
+            return {
+                ...prevValues,
+                familyMembers: [...prevValues.familyMembers, {name: '', relationship: ''}]
+            }
+        });
     };
 
     const handleRemoveFamilyMember = (index) => {
-        const updatedFamilyMembers = [...familyMembers];
+        const updatedFamilyMembers = [...values.familyMembers];
         updatedFamilyMembers.splice(index, 1);
-        setFamilyMembers(updatedFamilyMembers);
+        setValues((prevValues) => {
+            return {
+                ...prevValues,
+                familyMembers: updatedFamilyMembers
+            }
+        });
     };
 
     const handleFamilyMemberChange = (index, field, value) => {
-        const updatedFamilyMembers = [...familyMembers];
+        const updatedFamilyMembers = [...values.familyMembers];
         updatedFamilyMembers[index][field] = value;
-        setFamilyMembers(updatedFamilyMembers);
+        setValues((prevValues) => {
+            return {
+                ...prevValues,
+                familyMembers: updatedFamilyMembers
+            }
+        });
     };
+    
+    return (
 
-  return (
         <form className = { isOpen ? "open parte-info-input" : "closed parte-info-input" }>
         <div className='container-row space-between header'>
             <h1>Funeral announcement info</h1>
@@ -56,17 +59,18 @@ export default function ParteInfoInput({
             rows="4" 
             cols="50"
             placeholder='Poem'
-            onChange={ (e) => setPoem(e.target.value)}
+            value={ values.poem }
+            onChange={ (e) => handleChange(e)}
             />
 
-            <label htmlFor="nameannouncement">Announcement: </label>
+            <label htmlFor="announcement">Announcement: </label>
             <textarea
-            id="nameannouncement"
+            id="announcement"
             rows="4" 
             cols="50"
             placeholder='Announcement'
-            value={ announcement}
-            onChange={ (e) => setAnnouncement(e.target.value) }
+            value={ values.announcement}
+            onChange={ (e) => handleChange(e) }
             />
 
             <label htmlFor="adressing">Adressing: </label>
@@ -74,8 +78,8 @@ export default function ParteInfoInput({
             id='adressing'
             type="text"
             placeholder='Adressing'
-            value = { adressing }
-            onChange={ (e) => setAdressing(e.target.value) }
+            value = { values.adressing }
+            onChange={ (e) => handleChange(e) }
             />
 
             <label htmlFor="name">Name: </label>
@@ -83,8 +87,8 @@ export default function ParteInfoInput({
             id="name"
             type="text"
             placeholder='Name'
-            value={ name }
-            onChange={ (e) => setName(e.target.value) }
+            value={ values.name }
+            onChange={ (e) => handleChange(e) }
             />
 
             <label htmlFor="died">Died: </label>
@@ -93,18 +97,18 @@ export default function ParteInfoInput({
             rows="4" 
             cols="30"
             placeholder='Announcement'
-            value={ died }
-            onChange={ (e) => setDied(e.target.value) }
+            value={ values.died }
+            onChange={ (e) => handleChange(e) }
             />
 
             <label htmlFor="farewell">Farewell: </label>
             <textarea
-            id="died"
+            id="farewell"
             rows="4" 
             cols="40"
             placeholder='Farewell'
-            value={ farewell }
-            onChange={ (e) => setFarewell(e.target.value) }
+            value={ values.farewell }
+            onChange={ (e) => handleChange(e) }
             />
 
             <label htmlFor="adressing2">Adressing2: </label>
@@ -112,27 +116,27 @@ export default function ParteInfoInput({
             id="adressing2"
             type="text"
             placeholder='adressing 2'
-            value={ adressing2 }
-            onChange={ (e) => setAdressing2(e.target.value) }
+            value={ values.adressing2 }
+            onChange={ (e) => handleChange(e) }
             />
 
             <label htmlFor="familyMembers">Family Members:</label>
-            {familyMembers.map((member, index) => (
+            {(values.familyMembers).map((member, index) => (
             <div key={index}>
                 <input
-                type="text"
-                placeholder={`Family Member #${index + 1} Name`}
-                value={member.name}
-                onChange={(e) => handleFamilyMemberChange(index, 'name', e.target.value)}
+                    type="text"
+                    placeholder={`Family Member #${index + 1} Name`}
+                    value={member.name}
+                    onChange={(e) => handleFamilyMemberChange(index, 'name', e.target.value)}
                 />
                 <input
-                type="text"
-                placeholder={`Family Member #${index + 1} Role`}
-                value={member.role}
-                onChange={(e) => handleFamilyMemberChange(index, 'role', e.target.value)}
+                    type="text"
+                    placeholder={`Family Member #${index + 1} Role`}
+                    value={member.relationship}
+                    onChange={(e) => handleFamilyMemberChange(index, 'relationship', e.target.value)}
                 />
                 <button type="button" onClick={() => handleRemoveFamilyMember(index)}>
-                Remove
+                    Remove
                 </button>
             </div>
             ))}
@@ -141,5 +145,6 @@ export default function ParteInfoInput({
             </button>
         </div>
       </form>
-  )
+
+    )    
 }
