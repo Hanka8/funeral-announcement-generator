@@ -33,7 +33,7 @@ export default function ParteResult( {
         { (values.familyMembers).map((familyMember, index) => (
             <div className="familyMember-container" key = { index }>
                 <p className='familyMember-name'>{ familyMember.name }</p>
-                <p className='familyMember-role'>{ familyMember.role }</p>
+                <p className='familyMember-role'>{ familyMember.relationship }</p>
             </div>
         )
         )}
