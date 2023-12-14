@@ -39,7 +39,7 @@ function App() {
 
   function handleDesignChange(event) {
     const {name, value, type, checked} = event.target
-    setDesign(prevFormData => {
+    setDesign(prevFormData => { 
         return {
             ...prevFormData,
             [name]: type === "checkbox" ? checked : value

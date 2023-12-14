@@ -5,6 +5,10 @@
   font-size: 1rem;
 }
 
+body {
+  background-color: rgba(199, 199, 199, 0.753);
+}
+
 /* utility */
 
 .container-row {
@@ -79,6 +83,8 @@
 
 .parte-illustration {
   width: 30%;
+  margin-left: 2rem;
+  margin-top: 2rem;
 }
 
 .parte-info-input {
@@ -87,6 +93,7 @@
 
 .poem {
   max-width: 40%;
+  overflow-wrap: break-word;
   font-style: italic;
 }
 
