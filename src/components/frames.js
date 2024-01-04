@@ -1,5 +1,5 @@
 const importAll = (context) => context.keys().map(context);
 
-const frames = importAll(require.context('./assets/frame', false, /\.(webp)$/));
+const frames = importAll(require.context('./assets/frame', false, /\.(svg)$/));
 
 export default frames;
